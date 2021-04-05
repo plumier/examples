@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carts Should create new chart when no open cart 1`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "items": Array [],
+  "state": "Open",
+  "updatedAt": Any<String>,
+  "user": Object {
+    "id": 1,
+  },
+}
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shops Images Should upload file properly 1`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "mimeType": "image/jpeg",
+  "name": "landscape.jpeg",
+  "size": Any<Number>,
+  "updatedAt": Any<String>,
+  "url": "https://image.com/image.jpg",
+}
+`;

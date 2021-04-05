@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Products Should able to list all items globally 1`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "name": "MacBook Pro 16 2020",
+  "price": 2500,
+  "shop": Object {
+    "createdAt": Any<String>,
+    "deleted": false,
+    "id": Any<Number>,
+    "name": "Putra Mahkota",
+    "updatedAt": Any<String>,
+  },
+  "updatedAt": Any<String>,
+}
+`;

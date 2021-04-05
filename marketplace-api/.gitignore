@@ -1,0 +1,6 @@
+node_modules
+coverage
+src/**/*.js
+.env
+!jest.config.js
+.DS_Store

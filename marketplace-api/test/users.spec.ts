@@ -1,0 +1,72 @@
+import supertest from "supertest"
+import createApp from "../src/app"
+import { closeConnection, createToken, ignore, userToken } from "./_helper"
+
+
+afterEach(async () => {
+    await closeConnection()
+})
+
+describe("User", () => {
+    it("Should able to register by public", async () => {
+        const app = await createApp({ mode: "production" })
+        await supertest(app.callback())
+            .post("/api/v1/users")
+            .send({ name: "John Doe", email: "john.doe@gmail.com", password: "lorem ipsum" })
+            .expect(200)
+    })
+    it("Should restrict to specify Role", async () => {
+        const app = await createApp({ mode: "production" })
+        await supertest(app.callback())
+            .post("/api/v1/users")
+            .send({ name: "John Doe", email: "john.doe@gmail.com", password: "lorem ipsum", role: "Admin" })
+            .expect(403)
+    })
+    it("Should readable by the owner", async () => {
+        const app = await createApp({ mode: "production" })
+        const { body } = await supertest(app.callback())
+            .post("/api/v1/users")
+            .send({ name: "John Doe", email: "john.doe@gmail.com", password: "lorem ipsum" })
+            .expect(200)
+        const token = createToken(body.id, "User")
+        const { body: result } = await supertest(app.callback())
+            .get(`/api/v1/users/${body.id}`)
+            .set("Authorization", `Bearer ${token}`)
+            .expect(200)
+        expect(result).toMatchSnapshot(ignore)
+    })
+    it("Should only editable by the owner itself", async () => {
+        const app = await createApp({ mode: "production" })
+        const { body } = await supertest(app.callback())
+            .post("/api/v1/users")
+            .send({ name: "John Doe", email: "john.doe@gmail.com", password: "lorem ipsum" })
+            .expect(200)
+        const token = createToken(body.id, "User")
+        await supertest(app.callback())
+            .patch(`/api/v1/users/${body.id}`)
+            .send({ name: "John" })
+            .set("Authorization", `Bearer ${userToken}`)
+            .expect(401)
+        await supertest(app.callback())
+            .patch(`/api/v1/users/${body.id}`)
+            .send({ name: "John" })
+            .set("Authorization", `Bearer ${token}`)
+            .expect(200)
+    })
+    it("Should only delete-able by the owner itself", async () => {
+        const app = await createApp({ mode: "production" })
+        const { body } = await supertest(app.callback())
+            .post("/api/v1/users")
+            .send({ name: "John Doe", email: "john.doe@gmail.com", password: "lorem ipsum" })
+            .expect(200)
+        const token = createToken(body.id, "User")
+        await supertest(app.callback())
+            .delete(`/api/v1/users/${body.id}`)
+            .set("Authorization", `Bearer ${userToken}`)
+            .expect(401)
+        await supertest(app.callback())
+            .delete(`/api/v1/users/${body.id}`)
+            .set("Authorization", `Bearer ${token}`)
+            .expect(200)
+    })
+})

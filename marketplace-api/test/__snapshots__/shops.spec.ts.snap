@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shop Should assign person who register as owner 1`] = `
+Object {
+  "name": "John Doe",
+  "role": "ShopOwner",
+  "userId": Any<Number>,
+}
+`;

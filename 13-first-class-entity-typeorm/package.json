@@ -1,0 +1,27 @@
+{
+  "name": "first-class-entity-typeorm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "debug": "ts-node-dev --inspect -- ./index.ts",
+    "build": "tsc --noEmit",
+    "test": "exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@plumier/typeorm": "^1.0.0-rc.10",
+    "@plumier/swagger": "^1.0.0-rc.10",
+    "plumier": "^1.0.0-rc.10",
+    "typeorm": "^0.2.25",
+    "sqlite3": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "@types/jsonwebtoken": "^8.5.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.54",
+    "typescript": "^3.9.7"
+  }
+}

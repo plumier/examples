@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Should readable by the owner 1`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "email": "john.doe@gmail.com",
+  "id": Any<Number>,
+  "name": "John Doe",
+  "role": "User",
+  "updatedAt": Any<String>,
+}
+`;

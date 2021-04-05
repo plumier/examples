@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shop User Should able to add user by shop owner 1`] = `
+Object {
+  "name": "Ali Shop",
+  "role": "ShopOwner",
+  "shopId": Any<Number>,
+}
+`;
+
+exports[`Shop User Should able to add user by shop owner 2`] = `
+Object {
+  "name": "Tia Shop",
+  "role": "ShopStaff",
+  "shopId": Any<Number>,
+}
+`;

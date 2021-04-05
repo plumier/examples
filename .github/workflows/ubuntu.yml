@@ -1,0 +1,26 @@
+name: ubuntu
+
+on: [push, pull_request]
+
+jobs:
+  
+  build:
+    runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:3.4.23
+        ports:
+          - 27017:27017
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2.3.1
+    - name: Setup Node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '14'
+    - name: Install dependencies
+      run: yarn install
+    - name: Build (type check)
+      run: yarn build
+    - name: Run tests 
+      run: yarn test

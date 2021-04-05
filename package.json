@@ -1,0 +1,21 @@
+{
+  "name": "plumier-examples",
+  "version": "1.0.0",
+  "description": "Monorepo contains all plumier examples",
+  "repository": "git@github.com:plumier/examples.git",
+  "author": "Ketut Sandiarsa <ktutnik@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "test": "yarn workspaces run test",
+    "build": "yarn workspaces run build"
+  },
+  "workspaces": {
+    "packages": [
+      "./*"
+    ],
+    "nohoist": [
+      "**"
+    ]
+  }
+}

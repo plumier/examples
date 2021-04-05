@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shop Item Should able adding item by staff 1`] = `
+Object {
+  "basePrice": 2000,
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "name": "MacBook Pro 16 2020",
+  "price": 2500,
+  "updatedAt": Any<String>,
+}
+`;
+
+exports[`Shop Item Should hide basePrice for non shop staff 1`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "name": "MacBook Pro 16 2020",
+  "price": 2500,
+  "updatedAt": Any<String>,
+}
+`;
