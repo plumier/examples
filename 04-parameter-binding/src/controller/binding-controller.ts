@@ -1,7 +1,6 @@
-
-import { bind, JwtClaims, route } from "plumier";
-import { noop } from "@plumier/reflect"
 import { Context } from "koa"
+import { bind, JwtClaims, meta, route } from "plumier"
+
 
 /**
  * Example model 
@@ -9,13 +8,16 @@ import { Context } from "koa"
  * to make reflection library able to get its data type
  */
 class Body {
-    @noop()
+    @meta.property()
     string: string
-    @noop()
+
+    @meta.property()
     number: number
-    @noop()
+
+    @meta.property()
     date: Date
-    @noop()
+    
+    @meta.property()
     boolean: boolean
 }
 
