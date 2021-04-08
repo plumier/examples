@@ -2,7 +2,7 @@
 
 This monorepo contains comprehensive list of Plumier examples. Its intended to be used to learn Plumier quickly by example. 
 
-*  Most of examples on this repository created using [Plumier project starter](https://github.com/plumier/starters).
+Most of examples on this repository created using [Plumier project starter](https://github.com/plumier/starters).
 
 ## File Layout 
 This examples showing how you can layout your code, wether you can choose to separate your code per module or just put it in single file. 
