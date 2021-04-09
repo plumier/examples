@@ -19,7 +19,7 @@ Most of examples on this repository created using [Plumier project starter](http
 * [parameter-binding](parameter-binding) Parameter binding is process to bind request part (query, body, header) into action parameter. This directory contains example on how to bind request to parameter.
 
 * [validation](validation) contains example on how to validate user input, how to validate parameters and model.
-* 
+  
 * [type-conversion](type-conversion) contains example on how to setup action and parameter to make the type conversion work properly. 
 
 * [query-parser-mongoose](query-parser-mongoose) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.

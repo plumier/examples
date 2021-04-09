@@ -50,8 +50,8 @@ export class RootTwoController {
  * GET /api/v2/root/:id/one
  * GET /api/v2/root/:id/two/:tid
  */
-@route.root("/api/v1/root/:id")
-@route.root("/api/v2/root/:id")
+@route.root("api/v1/root/:id")
+@route.root("api/v2/root/:id")
 export class RootThreeController {
     @route.get()
     one(id: string) {
@@ -63,3 +63,22 @@ export class RootThreeController {
         return {}
     }
 }
+
+
+/**
+ * Absolute Root Route
+ * 
+ * Path start with slash (/) means absolute
+ * All preceding path (for example rootPath from configuration) will be ignored
+ * 
+ * Generated into:
+ * GET /root/one/index
+ */
+ @route.root("/root/four")
+ export class RootFourController {
+     @route.get()
+     index() {
+         return {}
+     }
+ }
+ 
