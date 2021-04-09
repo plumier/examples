@@ -4,10 +4,15 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 
 Most of examples on this repository created using [Plumier project starter](https://github.com/plumier/starters).
 
+### Project Layout and Entry Point
 
 * [file-layout-single-file](/01-file-layout-single-file) put your code in single file, good for simple project.
+  
+* [file-layout-classic](/02-file-layout-modular) put your code in classic MVC style directory, this setup good for medium and big project. 
 
 * [file-layout-modular](/02-file-layout-modular) put your code in separate directories, this setup good for medium and big project. 
+
+### Controller
 
 * [routing](03-routing) contains example on most routing trick, including how to create a restful controller and nested restful controller.
 
@@ -15,23 +20,33 @@ Most of examples on this repository created using [Plumier project starter](http
 
 * [validation-and-type-conversion](05-validation-and-type-conversion) contains example on how to validate user info and how to setup action and parameter to make the type conversion work properly. 
 
-* [data-access-mongoose](#) contains example on how to use Mongoose helper to access MongoDB database.
-
-* [data-access-typeorm](#) contains example on how to use TypeORM helper to access SQL database.
-
 * [query-parser-mongoose](#) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
 * [query-parser-typeorm](#) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
-* [security](#) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
+### Generic Controller and First Class Entity
 
 * [first-class-entity-mongoose](#) contains example on how to use first class entity with Mongoose.
-  
+    
 * [first-class-entity-typeorm](#) contains example on how to use first class entity with TypeORM.
+  
+### Data Access
+  
+* [data-access-mongoose](#) contains example on how to use Mongoose helper to access MongoDB database.
+
+* [data-access-typeorm](#) contains example on how to use TypeORM helper to access SQL database.
+
+### Security
+
+* [security](#) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
 
 * [social-login](#) contains example on how to use OAuth from several providers such as Facebook, Google, Twitter, GitHub, GitLab.
 
+### Swagger 
+
 * [swagger](#) contains example on how to use enable the swagger facility.
+
+### Static Files and Upload
 
 * [serve-static](#) contains example on how to server static files from specific directory, or serve a file using route.
 
