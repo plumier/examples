@@ -6,56 +6,59 @@ Most of examples on this repository created using [Plumier project starter](http
 
 ### Project Layout and Entry Point
 
-* [file-layout-single-file](/01-file-layout-single-file) put your code in single file, good for simple project.
+* [file-layout-single-file](/file-layout-single-file) put your code in single file, good for simple project.
   
-* [file-layout-classic](/02-file-layout-modular) put your code in classic MVC style directory, this setup good for medium and big project. 
+* [file-layout-classic](/file-layout-classic) put your code in classic MVC style directory, this setup good for medium and big project. 
 
-* [file-layout-modular](/02-file-layout-modular) put your code in separate directories, this setup good for medium and big project. 
+* [file-layout-modular](/file-layout-modular) put your code in separate directories, this setup good for medium and big project. 
 
 ### Controller
 
-* [routing](03-routing) contains example on most routing trick, including how to create a restful controller and nested restful controller.
+* [routing](routing) contains example on most routing trick, including how to create a restful controller and nested restful controller.
 
-* [parameter-binding](04-parameter-binding) Parameter binding is process to bind request part (query, body, header) into action parameter. This directory contains example on how to bind request to parameter.
+* [parameter-binding](parameter-binding) Parameter binding is process to bind request part (query, body, header) into action parameter. This directory contains example on how to bind request to parameter.
 
-* [validation-and-type-conversion](05-validation-and-type-conversion) contains example on how to validate user info and how to setup action and parameter to make the type conversion work properly. 
+* [validation](validation) contains example on how to validate user input, how to validate parameters and model.
+* 
+* [type-conversion](type-conversion) contains example on how to setup action and parameter to make the type conversion work properly. 
 
-* [query-parser-mongoose](#) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
+* [query-parser-mongoose](query-parser-mongoose) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
-* [query-parser-typeorm](#) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
+* [query-parser-typeorm](query-parser-typeorm) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
 ### Generic Controller and First Class Entity
 
-* [first-class-entity-mongoose](#) contains example on how to use first class entity with Mongoose.
+* [first-class-entity-mongoose](first-class-entity-mongoose) contains example on how to use first class entity with Mongoose.
     
-* [first-class-entity-typeorm](#) contains example on how to use first class entity with TypeORM.
+* [first-class-entity-typeorm](first-class-entity-typeorm) contains example on how to use first class entity with TypeORM.
   
 ### Data Access
   
-* [data-access-mongoose](#) contains example on how to use Mongoose helper to access MongoDB database.
+* [data-access-mongoose](data-access-mongoose) contains example on how to use Mongoose helper to access MongoDB database.
 
-* [data-access-typeorm](#) contains example on how to use TypeORM helper to access SQL database.
+* [data-access-typeorm](data-access-typeorm) contains example on how to use TypeORM helper to access SQL database.
 
 ### Security
 
-* [security](#) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
+* [authentication-and-authorization](authentication-and-authorization) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
+  
+* [entity-policy](entity-policy) contains example on how to secure first class entity using entity policy.
 
-* [social-login](#) contains example on how to use OAuth from several providers such as Facebook, Google, Twitter, GitHub, GitLab.
+* [social-login](social-login) contains example on how to use OAuth from several providers such as Facebook, Google, Twitter, GitHub, GitLab.
 
 ### Swagger 
 
-* [swagger](#) contains example on how to use enable the swagger facility.
+* [swagger](swagger) contains example on how to use enable the swagger facility.
 
 ### Static Files and Upload
 
-* [serve-static](#) contains example on how to server static files from specific directory, or serve a file using route.
+* [serve-static](serve-static) contains example on how to server static files from specific directory, or serve a file using route.
 
-* [file-upload-local](#) contains example on how to create file upload handler with local storage.
+* [file-upload-local](file-upload-local) contains example on how to create file upload handler with local storage.
+
+* [file-upload-s3](file-upload-s3) contains example on how to create file upload handler with Amazon S3 storage.
 
 
-* [file-upload-s3](#) contains example on how to create file upload handler with Amazon S3 storage.
-
-
-* [file-upload-google](#) contains example on how to create file upload handler with Google Storage Bucket.
+* [file-upload-google](file-upload-google) contains example on how to create file upload handler with Google Storage Bucket.
 
 

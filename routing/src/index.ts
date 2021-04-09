@@ -1,9 +1,6 @@
-import dotenv from "dotenv"
+import Plumier, { WebApiFacility } from "plumier"
 
-import createApp from "./app"
 
-dotenv.config()
-
-createApp()
-    .then(koa => koa.listen(process.env.PORT ?? 8000))
-    .catch(err => console.error(err))
+new Plumier()
+    .set(new WebApiFacility())
+    .listen(8000)
