@@ -61,4 +61,7 @@ Most of examples on this repository created using [Plumier project starter](http
 
 * [file-upload-google](file-upload-google) contains example on how to create file upload handler with Google Storage Bucket.
 
+### Complete Example 
+
+* [marketplace-api](marketplace-api) example how to create market place API using first class entity and generic controller, with complex authorization.
 
