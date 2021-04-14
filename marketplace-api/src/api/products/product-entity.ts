@@ -18,7 +18,7 @@ export class Product extends EntityBase {
     @Column()
     name:string
 
-    @authorize.read("ShopOwner", "ShopStaff")
+    @authorize.read("ShopOwner", "ShopStaff", "Admin")
     @Column()
     basePrice:number
 

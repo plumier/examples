@@ -20,7 +20,7 @@ import { ShippingAddress } from "../users-shipping-addresses/users-shipping-addr
 @Entity()
 export class User extends EntityBase {
     // email will only visible by the user itself
-    @authorize.read("ResourceOwner")
+    @authorize.read("ResourceOwner", "Admin")
     @val.required()
     @val.unique()
     @val.email()
