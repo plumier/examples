@@ -32,6 +32,10 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
     
 * [first-class-entity-typeorm](first-class-entity-typeorm) contains example on how to use first class entity with TypeORM.
   
+* [generic-controller-typeorm](generic-controller-typeorm) contains example on how to create CRUD restful API by extending generic controller instead of using first class entity.
+  
+* [custom-generic-controller-typeorm](custom-generic-controller-typeorm) contains example on how to use first class entity with custom generic controller.
+  
 ### Data Access
   
 * [data-access-mongoose](data-access-mongoose) contains example on how to use Mongoose helper to access MongoDB database.
@@ -48,7 +52,7 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 
 ### Swagger 
 
-* [swagger](swagger) contains example on how to use enable the swagger facility.
+* [swagger](swagger) contains example on how to enable the swagger facility.
 
 ### Static Files and Upload
 

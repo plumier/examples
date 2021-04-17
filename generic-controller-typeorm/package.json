@@ -1,5 +1,5 @@
 {
-  "name": "first-class-entity-typeorm",
+  "name": "generic-controller-typeorm",
   "version": "1.0.0",
   "scripts": {
     "debug": "ts-node-dev --inspect -- src/index",

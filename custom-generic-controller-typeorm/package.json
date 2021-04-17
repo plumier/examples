@@ -1,5 +1,5 @@
 {
-  "name": "first-class-entity-typeorm",
+  "name": "custom-generic-controller-typeorm",
   "version": "1.0.0",
   "scripts": {
     "debug": "ts-node-dev --inspect -- src/index",
@@ -10,14 +10,17 @@
   "dependencies": {
     "@types/dotenv": "^8.2.0",
     "dotenv": "^8.2.0",
-    "@plumier/typeorm": "1.0.0-rc.11",
-    "plumier": "1.0.0-rc.11",
+    "@plumier/typeorm": "1.0.0-canary.knkv8u23.0",
+    "plumier": "1.0.0-canary.knkv8u23.0",
     "sqlite3": "^5.0.2"
+  },
+  "peerDependencies": {
+    "typeorm": "*"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/supertest": "^2.0.11",
-    "@plumier/testing": "^1.0.0-rc.11",
+    "@plumier/testing": "^1.0.0-canary.knkv8u23.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.5.4",
     "ts-node-dev": "^1.1.6",
