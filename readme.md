@@ -54,7 +54,7 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 
 * [swagger](swagger) contains example on how to enable the swagger facility.
 
-### Static Files and Upload
+### Server Static Files and File Upload
 
 * [serve-static](serve-static) contains example on how to server static files from specific directory, or serve a file using route.
 
