@@ -8,7 +8,7 @@ fi
 # update root package
 ncu -u
 # update pckages
-for file in ./*/package.json; do
+for file in ./*/*/package.json; do
     ncu -u --packageFile "$file"
 done
 # check if update successful
