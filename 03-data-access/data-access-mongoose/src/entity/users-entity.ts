@@ -1,12 +1,14 @@
 import model, { collection } from "@plumier/mongoose"
 import { genericController, meta } from "plumier"
 
-@genericController()
 @collection()
-export class Log {
+export class User {
     @collection.id()
     id:string
-    
+
+    @meta.property()
+    email: string
+
     @meta.property()
     name: string
 
