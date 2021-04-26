@@ -3,7 +3,6 @@ import { genericController } from "plumier"
 
 import { User } from "./users-entity"
 
-@genericController()
 @collection()
 export class Log {
     @collection.id()

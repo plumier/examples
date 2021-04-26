@@ -1,24 +1,7 @@
 import { GenericController } from "@plumier/typeorm"
-import { entity, genericController } from "plumier"
-import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm"
 
-@Entity()
-export class User {
-    @PrimaryGeneratedColumn()
-    id: number
+import { User } from "../entity/users-entity"
 
-    @Column()
-    email: string
-
-    @Column()
-    name: string
-
-    @entity.deleteColumn()
-    @Column()
-    deleted: boolean
-
-    @CreateDateColumn()
-    createdAt: Date
-}
-
+// create generic controller using entity
+// it will serve /users
 export class UsersController extends GenericController(User){}
