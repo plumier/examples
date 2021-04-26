@@ -1,20 +1,13 @@
-import model, { collection } from "@plumier/mongoose"
-import { genericController, meta } from "plumier"
+import { collection } from "@plumier/mongoose"
+
+import { EntityBase } from "./base-entity"
 
 @collection()
-export class User {
-    @collection.id()
-    id:string
+export class User extends EntityBase {
 
-    @meta.property()
+    @collection.property()
     email: string
 
-    @meta.property()
+    @collection.property()
     name: string
-
-    @meta.property()
-    deleted:boolean
-
-    @meta.property()
-    createdAt:Date
 }
