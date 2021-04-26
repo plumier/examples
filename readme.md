@@ -26,6 +26,12 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 
 * [query-parser-typeorm](02-controller/query-parser-typeorm) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
+### Data Access
+  
+* [data-access-mongoose](04-data-access/data-access-mongoose) contains example on how to use Mongoose helper to access MongoDB database.
+
+* [data-access-typeorm](04-data-access/data-access-typeorm) contains example on how to use TypeORM helper to access SQL database.
+
 ### First Class Entity and Generic Controller
 
 * [first-class-entity-mongoose](03-first-class-entity/first-class-entity-mongoose) contains example on how to use first class entity with Mongoose.
@@ -36,15 +42,9 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
   
 * [custom-generic-controller-typeorm](03-first-class-entity/custom-generic-controller-typeorm) contains example on how to use first class entity with custom generic controller.
   
-### Data Access
-  
-* [data-access-mongoose](04-data-access/data-access-mongoose) contains example on how to use Mongoose helper to access MongoDB database.
-
-* [data-access-typeorm](04-data-access/data-access-typeorm) contains example on how to use TypeORM helper to access SQL database.
-
 ### Security
 
-* [authentication-and-authorization](05-security/authentication-and-authorization) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
+* [basic-security](05-security/basic-security) contains example on how to create authentication with JWT and how to authorize your user using policy based authorization. 
   
 * [entity-policy](05-security/entity-policy) contains example on how to secure first class entity using entity policy.
 
