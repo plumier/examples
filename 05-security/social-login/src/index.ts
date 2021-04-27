@@ -35,7 +35,7 @@ export class AuthController {
 new Plumier()
     .set(new WebApiFacility())
     .set(new LoggerFacility())
-    // server the static files (by default under www) directory
+    // serve the static files (by default under www) directory
     .set(new ServeStaticFacility())
     .set(new FacebookOAuthFacility())
     .set(new GoogleOAuthFacility())
