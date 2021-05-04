@@ -1,5 +1,5 @@
 {
-  "name": "serve-static",
+  "name": "file-upload-local",
   "version": "1.0.0",
   "scripts": {
     "debug": "ts-node-dev --inspect -- src/index",
@@ -8,8 +8,7 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "plumier": "1.0.0-rc.12",
-    "@plumier/serve-static": "^1.0.0-rc.12"
+    "plumier": "1.0.0-rc.12"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",
