@@ -1,5 +1,5 @@
 import { noop } from "@plumier/reflect"
-import { val } from "plumier"
+import { genericController, val } from "plumier"
 import { Column, Entity, ManyToOne } from "typeorm"
 
 import { EntityBase } from "../_shared/entity-base"
@@ -14,6 +14,12 @@ export class ShopUser extends EntityBase {
     @ManyToOne(x => User)
     user: User
 
+    @genericController(c => {
+        c.setPath("shops/:pid/users/:id")
+        c.mutators().authorize("ShopOwner")
+        c.accessors().authorize("ShopOwner", "ShopStaff")
+            .transformer(ShopUserDto, (x:ShopUser) => ({ userId: x.user.id, name: x.user.name, role: x.role }))
+    })
     @ManyToOne(x => Shop)
     shop:Shop
 
