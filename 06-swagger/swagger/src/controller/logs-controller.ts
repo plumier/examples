@@ -38,7 +38,7 @@ export class LogsController {
      */
     @meta.type(Log)
     @route.get(":id")
-    async get(id:number, @val.enums(["Deleted", "Inactive"]) state:"Active" | "Inactive"):Promise<Log> {
+    async get(id:number, @val.enums(["Active", "Inactive"]) state:"Active" | "Inactive"):Promise<Log> {
         return <Log>{}
     }
 }
