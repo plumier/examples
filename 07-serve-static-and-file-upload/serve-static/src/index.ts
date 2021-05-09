@@ -1,11 +1,9 @@
 import { ServeStaticFacility } from "@plumier/serve-static"
-import dotenv from "dotenv"
 import { join } from "path"
-import Plumier, { bind, response, route, WebApiFacility, LoggerFacility } from "plumier"
+import Plumier, { response, route, WebApiFacility } from "plumier"
 
-dotenv.config()
 
-export class AuthController {
+export class HomeController {
     @route.get("/")
     index() {
         // use response.file to serve single file from action
@@ -15,7 +13,6 @@ export class AuthController {
 
 new Plumier()
     .set(new WebApiFacility())
-    .set(new LoggerFacility())
     // serve the static files (by default under www) directory
     .set(new ServeStaticFacility())
     .listen(8000)
