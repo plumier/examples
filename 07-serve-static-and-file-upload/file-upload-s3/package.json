@@ -1,5 +1,5 @@
 {
-  "name": "file-upload-local",
+  "name": "file-upload-s3",
   "version": "1.0.0",
   "scripts": {
     "debug": "ts-node-dev --inspect -- src/index",
@@ -8,7 +8,8 @@
     "test": "exit 0"
   },
   "dependencies": {
-    "plumier": "^1.0.0"
+    "plumier": "^1.0.0",
+    "aws-sdk": "^2.903.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.22",

@@ -63,7 +63,7 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 * [file-upload-s3](07-serve-static-and-file-upload/file-upload-s3) contains example on how to create file upload handler with Amazon S3 storage.
 
 
-* [file-upload-google](07-serve-static-and-file-upload/file-upload-google) contains example on how to create file upload handler with Google Storage Bucket.
+<!-- * [file-upload-google](07-serve-static-and-file-upload/file-upload-google) contains example on how to create file upload handler with Google Storage Bucket. -->
 
 ### Complete Example 
 
