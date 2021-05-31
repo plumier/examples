@@ -1,7 +1,7 @@
 import { authorize, genericController, val } from "plumier"
 import { Column, Entity, ManyToOne } from "typeorm"
 
-import { EntityBase } from "../_shared/entity-base"
+import { EntityBase } from "../../_shared/entity-base"
 import { Shop } from "../shops/shops-entity"
 
 

@@ -11,7 +11,7 @@ describe("Users Shipping Addresses", () => {
         const app = await createApp({ mode: "production" })
         const user = await createUser(app)
         await supertest(app.callback())
-            .post(`/api/v1/users/${user.id}/shipping-addresses`)
+            .post(`/api/users/${user.id}/shipping-addresses`)
             .send({
                 address: "Br. Guntur Kemenuh Blahbatuh Gianyar",
                 city: "Gianyar",
@@ -21,7 +21,7 @@ describe("Users Shipping Addresses", () => {
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
         await supertest(app.callback())
-            .post(`/api/v1/users/${user.id}/shipping-addresses`)
+            .post(`/api/users/${user.id}/shipping-addresses`)
             .send({
                 address: "Br. Kemuning Blahbatuh Gianyar",
                 city: "Gianyar",
@@ -31,7 +31,7 @@ describe("Users Shipping Addresses", () => {
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
         const { body } = await supertest(app.callback())
-            .get(`/api/v1/users/${user.id}/shipping-addresses`)
+            .get(`/api/users/${user.id}/shipping-addresses`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
         expect(body[0]).toMatchSnapshot(ignore)
@@ -42,7 +42,7 @@ describe("Users Shipping Addresses", () => {
         const user = await createUser(app)
         const otherUser = await createUser(app, { email: "other.user@gmail.com" })
         const { body: added } = await supertest(app.callback())
-            .post(`/api/v1/users/${user.id}/shipping-addresses`)
+            .post(`/api/users/${user.id}/shipping-addresses`)
             .send({
                 address: "Br. Guntur Kemenuh Blahbatuh Gianyar",
                 city: "Gianyar",
@@ -52,11 +52,11 @@ describe("Users Shipping Addresses", () => {
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
         await supertest(app.callback())
-            .delete(`/api/v1/users/${user.id}/shipping-addresses/${added.id}`)
+            .delete(`/api/users/${user.id}/shipping-addresses/${added.id}`)
             .set("Authorization", `Bearer ${otherUser.token}`)
             .expect(401)
         await supertest(app.callback())
-            .delete(`/api/v1/users/${user.id}/shipping-addresses/${added.id}`)
+            .delete(`/api/users/${user.id}/shipping-addresses/${added.id}`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
     })

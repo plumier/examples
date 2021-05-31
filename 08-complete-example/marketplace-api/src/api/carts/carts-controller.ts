@@ -7,7 +7,7 @@ import { Cart } from "./carts-entity"
 const config: GenericControllerConfiguration = c => {
     c.methods("Post", "Delete", "GetOne").ignore()
     c.methods("Put", "Patch").authorize("CartOwner")
-    c.getMany().authorize("Admin")
+    c.getMany().ignore()
 }
 
 export class CartsController extends GenericController(Cart, config) {

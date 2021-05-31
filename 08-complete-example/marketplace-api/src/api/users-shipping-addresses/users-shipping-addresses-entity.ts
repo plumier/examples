@@ -1,6 +1,6 @@
 import { Column, Entity, ManyToOne } from "typeorm"
 
-import { EntityBase } from "../_shared/entity-base"
+import { EntityBase } from "../../_shared/entity-base"
 import { User } from "../users/users-entity"
 import { val } from "@plumier/validator"
 import { genericController } from "@plumier/generic-controller"

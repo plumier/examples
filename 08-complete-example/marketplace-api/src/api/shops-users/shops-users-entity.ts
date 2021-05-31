@@ -2,7 +2,7 @@ import { noop } from "@plumier/reflect"
 import { genericController, val } from "plumier"
 import { Column, Entity, ManyToOne } from "typeorm"
 
-import { EntityBase } from "../_shared/entity-base"
+import { EntityBase } from "../../_shared/entity-base"
 import { Shop } from "../shops/shops-entity"
 import { User } from "../users/users-entity"
 

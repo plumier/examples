@@ -26,7 +26,7 @@ export const adminToken = createToken(456, "Admin")
 
 export async function createUser(app: any, user: Partial<User> = {}) {
     const { body } = await await supertest(app.callback())
-        .post("/api/v1/users")
+        .post("/api/users")
         .set("Authorization", `Bearer ${adminToken}`)
         .send({
             email: user.email ?? "john.doe@gmail.com",
@@ -53,7 +53,7 @@ export async function createShop(app: any, opt?: CreateShopOption) {
     }
     const shopOwner = await createUser(app, option.owner)
     const { body } = await supertest(app.callback())
-        .post("/api/v1/shops")
+        .post("/api/shops")
         .send({ name: "Putra Mahkota", ...option.shop })
         .set("Authorization", `Bearer ${shopOwner.token}`)
         .expect(200)
@@ -62,7 +62,7 @@ export async function createShop(app: any, opt?: CreateShopOption) {
         const result = await createUser(app, staff)
         shopStaffs.push(result)
         await supertest(app.callback())
-            .post(`/api/v1/shops/${body.id}/users`)
+            .post(`/api/shops/${body.id}/users`)
             .send({ user: result.id })
             .set("Authorization", `Bearer ${shopOwner.token}`)
             .expect(200)
@@ -70,7 +70,7 @@ export async function createShop(app: any, opt?: CreateShopOption) {
     const shopProducts = []
     for (const item of option.items ?? []) {
         const { body: addedProduct } = await supertest(app.callback())
-            .post(`/api/v1/shops/${body.id}/products`)
+            .post(`/api/shops/${body.id}/products`)
             .send(item)
             .set("Authorization", `Bearer ${shopOwner.token}`)
             .expect(200)

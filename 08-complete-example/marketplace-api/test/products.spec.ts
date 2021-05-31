@@ -26,7 +26,7 @@ describe("Products", () => {
         })
         const user = await createUser(app, { email: "jane.dane@gmail.com", name: "Jane Dane" })
         const { body } = await supertest(app.callback())
-            .get("/api/v1/products")
+            .get("/api/products")
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
         expect(body.length).toBe(6)
