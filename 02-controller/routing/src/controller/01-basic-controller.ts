@@ -77,7 +77,7 @@ export class RoutingController {
     /**
     * Multiple Routes
     * 
-    * When provided empty string, action name will be ignored
+    * When provided multiple decorators, it generated into multiple routes
     * 
     * Generated into:
     * GET /routing/multiple/one?par1=lorem&par2=1234
