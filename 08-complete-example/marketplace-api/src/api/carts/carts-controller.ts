@@ -1,12 +1,12 @@
 import { GenericController } from "@plumier/typeorm"
-import { bind, GenericControllerConfiguration, JwtClaims, route } from "plumier"
+import { bind, ControllerBuilder, JwtClaims, route } from "plumier"
 import { getRepository } from "typeorm"
 
 import { Cart } from "./carts-entity"
 
-const config: GenericControllerConfiguration = c => {
+const config = (c:ControllerBuilder) => {
     c.methods("Post", "Delete", "GetOne").ignore()
-    c.methods("Put", "Patch").authorize("CartOwner")
+    c.methods("Put", "Patch").authorize("ResourceOwner")
     c.getMany().ignore()
 }
 
@@ -44,7 +44,6 @@ export class CartsController extends GenericController(Cart, config) {
     async checkout(@bind.user() user: JwtClaims) {
         const repo = getRepository(Cart)
         const cart = await this.getOpen(user)
-
         await repo.save({ ...cart, state: "Closed" })
     }
 }

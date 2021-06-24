@@ -12,15 +12,13 @@
 [User]1-*[ShipAddr]
 [User]1-*[Cart]
 [User]1-*[Order]
-[Image]*-1[Product]
-[User]1-*[Image]
-
+[Image]*-*[Product]
 
 [User|+email;+password;+role]
 [ShopUser|+role;+shop;+user]
 [Shop|+name;+users;+products]
 [ShipAddr|+address;+city;+country;+zipCode]
-[Product|+name;+basePrice;+price;+image]
+[Product|+name;+basePrice;+price;+images]
 [Cart|+date;+state;+shipAddr;+items;+user]
 [CartItem|+quantity;+product;+cart]
 [Order|+date;+state;+shipAddr;+items;+user;+shop]

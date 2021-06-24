@@ -1,5 +1,5 @@
 import { genericController } from "@plumier/generic-controller"
-import { bind, JwtClaims, preSave, val } from "plumier"
+import { authorize, bind, JwtClaims, preSave, val } from "plumier"
 import { Column, Entity, getRepository, OneToMany } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
@@ -16,9 +16,11 @@ export class Shop extends EntityBase {
     @Column()
     name: string
 
+    @authorize.none()
     @OneToMany(x => ShopUser, x => x.shop)
     users: ShopUser[]
 
+    @authorize.none()
     @OneToMany(x => Product, x => x.shop)
     products: Product[]
 

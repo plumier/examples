@@ -6,6 +6,6 @@
     "module": "commonjs",
     "strictPropertyInitialization": false,
     "strict": true,
-    "esModuleInterop": true,
+    "esModuleInterop": true
   }
 }

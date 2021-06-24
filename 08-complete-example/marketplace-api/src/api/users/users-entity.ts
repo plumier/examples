@@ -1,14 +1,16 @@
 import bcrypt from "bcryptjs"
-import { authorize, genericController, preSave, val } from "plumier"
+import { authorize, ControllerBuilder, genericController, preSave, val } from "plumier"
 import { Column, Entity } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
 
-@genericController(c => {
+const config = (c:ControllerBuilder) => {
     c.post().authorize("Public")
     c.methods("Delete", "GetOne", "Patch", "Put").authorize("ResourceOwner")
     c.getMany().ignore()
-})
+}
+
+@genericController(config)
 @Entity()
 export class User extends EntityBase {
     @authorize.read("ResourceOwner", "Admin")

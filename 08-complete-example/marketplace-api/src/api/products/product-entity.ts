@@ -1,8 +1,9 @@
 import { genericController } from "@plumier/generic-controller"
 import { authorize, val } from "plumier"
-import { Column, Entity, ManyToOne } from "typeorm"
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
+import { Image } from "../images/images-entity"
 import { Shop } from "../shops/shops-entity"
 
 @genericController(c => {
@@ -11,6 +12,7 @@ import { Shop } from "../shops/shops-entity"
 @Entity()
 export class Product extends EntityBase {
 
+    @authorize.readonly()
     @ManyToOne(x => Shop)
     shop:Shop 
 
@@ -25,4 +27,8 @@ export class Product extends EntityBase {
     @val.required()
     @Column()
     price:number
+
+    @ManyToMany(x => Image)
+    @JoinTable()
+    images:Image[]
 }

@@ -1,17 +1,19 @@
+import { genericController } from "@plumier/generic-controller"
+import { val } from "@plumier/validator"
+import { authorize } from "plumier"
 import { Column, Entity, ManyToOne } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
 import { User } from "../users/users-entity"
-import { val } from "@plumier/validator"
-import { genericController } from "@plumier/generic-controller"
 
 
+@genericController(c => {
+    c.accessors().authorize("Admin")
+    c.mutators().ignore()
+})
 @Entity()
 export class ShippingAddress extends EntityBase {
-    @genericController(c => {
-        c.setPath("users/:pid/shipping-addresses/:id")
-        c.all().authorize("ResourceOwner")
-    })
+    @authorize.readonly()
     @ManyToOne(x => User)
     user:User
 

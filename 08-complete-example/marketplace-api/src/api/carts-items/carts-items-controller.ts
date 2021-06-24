@@ -1,14 +1,14 @@
 import { GenericController } from "@plumier/typeorm"
-import { GenericControllerConfiguration, HttpStatusError } from "plumier"
+import { ControllerBuilder, HttpStatusError } from "plumier"
 import { getRepository } from "typeorm"
 
 import { Cart } from "../carts/carts-entity"
 import { Product } from "../products/product-entity"
 import { CartItem } from "./carts-items-entity"
 
-const config: GenericControllerConfiguration = c => {
+const config = (c:ControllerBuilder) => {
     c.methods("GetMany", "GetOne").ignore()
-    c.methods("Put", "Patch", "Delete", "Post").authorize("CartOwner")
+    c.methods("Put", "Patch", "Delete", "Post").authorize("ResourceOwner")
 }
 
 export class CartItemController extends GenericController([Cart, "items"], config) {
