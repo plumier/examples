@@ -1,9 +1,10 @@
 import { type } from "@plumier/reflect"
-import { bind, FormFile, JwtClaims, route, val } from "plumier"
+import { api, bind, FormFile, JwtClaims, route, val } from "plumier"
 import { getRepository } from "typeorm"
 
 import { Image } from "./images-entity"
 
+@api.tag("Image Management")
 @route.root("images")
 export class ImagesController  {
     @route.post()

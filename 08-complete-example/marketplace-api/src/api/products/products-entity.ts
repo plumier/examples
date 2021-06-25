@@ -1,14 +1,15 @@
-import { genericController } from "@plumier/generic-controller"
-import { authorize, val } from "plumier"
+import { api, authorize, genericController, val } from "plumier"
 import { Column, Entity, JoinTable, ManyToMany, ManyToOne } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
 import { Image } from "../images/images-entity"
 import { Shop } from "../shops/shops-entity"
 
+// /api/products
 @genericController(c => {
     c.mutators().ignore()
 })
+@api.tag("Product List")
 @Entity()
 export class Product extends EntityBase {
 

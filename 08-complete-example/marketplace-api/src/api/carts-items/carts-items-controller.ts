@@ -1,9 +1,9 @@
 import { GenericController } from "@plumier/typeorm"
-import { ControllerBuilder, HttpStatusError } from "plumier"
+import { api, ControllerBuilder, HttpStatusError } from "plumier"
 import { getRepository } from "typeorm"
 
 import { Cart } from "../carts/carts-entity"
-import { Product } from "../products/product-entity"
+import { Product } from "../products/products-entity"
 import { CartItem } from "./carts-items-entity"
 
 const config = (c:ControllerBuilder) => {
@@ -11,8 +11,10 @@ const config = (c:ControllerBuilder) => {
     c.methods("Put", "Patch", "Delete", "Post").authorize("ResourceOwner")
 }
 
+@api.tag("Shopping Cart")
 export class CartItemController extends GenericController([Cart, "items"], config) {
-    async save(pid: number, data: CartItem) {
+
+    override async save(pid: number, data: CartItem) {
         const cartItemRepo = getRepository(CartItem)
         const cartRepo = getRepository(Cart)
         const itemRepo = getRepository(Product)

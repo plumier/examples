@@ -1,7 +1,7 @@
 import { entityPolicy } from "plumier"
 import { getRepository } from "typeorm"
 
-import { Product } from "../products/product-entity"
+import { Product } from "./products-entity"
 import { ShopUser } from "../shops-users/shops-users-entity"
 
 

@@ -1,7 +1,7 @@
 import { entityPolicy } from "plumier"
 import { getRepository } from "typeorm"
 
-import { ShippingAddress } from "../shipping-addresses/shipping-addresses-entity"
+import { ShippingAddress } from "./shipping-addresses-entity"
 
 
 

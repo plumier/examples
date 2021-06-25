@@ -4,7 +4,7 @@ import { join } from "path"
 import { JwtClaims } from "plumier"
 import supertest from "supertest"
 import { getConnection } from "typeorm"
-import { Product } from "../src/api/products/product-entity"
+import { Product } from "../src/api/products/products-entity"
 import { Shop } from "../src/api/shops/shops-entity"
 import { User } from "../src/api/users/users-entity"
 
