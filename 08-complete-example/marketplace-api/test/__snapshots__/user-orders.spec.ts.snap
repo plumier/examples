@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Orders Should able to list orders 1`] = `
+Array [
+  Object {
+    "shop": "Putra Mahkota",
+    "state": "ReceivedBySeller",
+  },
+  Object {
+    "shop": "Ali Shop",
+    "state": "ReceivedBySeller",
+  },
+]
+`;

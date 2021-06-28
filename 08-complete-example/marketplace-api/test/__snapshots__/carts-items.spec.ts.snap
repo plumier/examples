@@ -1,100 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Charts Items Should able to add from multiple shops 1`] = `
-Object {
-  "address": null,
-  "createdAt": Any<String>,
-  "deleted": false,
-  "id": Any<Number>,
-  "items": Array [
-    Object {
-      "id": 1,
-      "itemId": 1,
-      "itemName": "MacBook Pro 16 2020",
-      "price": 2500,
-      "quantity": 1,
-      "shopId": 1,
-      "shopName": "Putra Mahkota",
-      "subTotal": 2500,
-    },
-    Object {
-      "id": 2,
-      "itemId": 4,
-      "itemName": "MacBook Pro 16 2020",
-      "price": 2100,
-      "quantity": 1,
-      "shopId": 2,
-      "shopName": "Ali Shop",
-      "subTotal": 2100,
-    },
-  ],
-  "state": "Open",
-  "updatedAt": Any<String>,
-}
+Array [
+  Object {
+    "id": 1,
+    "productId": 1,
+    "productName": "MacBook Pro 16 2020",
+    "productPrice": 2500,
+    "quantity": 1,
+    "shopId": 1,
+    "shopName": "Putra Mahkota",
+    "subTotal": 2500,
+  },
+  Object {
+    "id": 2,
+    "productId": 4,
+    "productName": "MacBook Pro 16 2020",
+    "productPrice": 2100,
+    "quantity": 1,
+    "shopId": 2,
+    "shopName": "Ali Shop",
+    "subTotal": 2100,
+  },
+]
 `;
 
 exports[`Charts Items Should add item properly 1`] = `
-Object {
-  "address": null,
-  "createdAt": Any<String>,
-  "deleted": false,
-  "id": Any<Number>,
-  "items": Array [
-    Object {
-      "id": 1,
-      "itemId": 1,
-      "itemName": "MacBook Pro 16 2020",
-      "price": 2500,
-      "quantity": 1,
-      "shopId": 1,
-      "shopName": "Putra Mahkota",
-      "subTotal": 2500,
-    },
-    Object {
-      "id": 2,
-      "itemId": 2,
-      "itemName": "Li-Ion Battery",
-      "price": 250,
-      "quantity": 2,
-      "shopId": 1,
-      "shopName": "Putra Mahkota",
-      "subTotal": 500,
-    },
-    Object {
-      "id": 3,
-      "itemId": 3,
-      "itemName": "M3 SSD 1TB",
-      "price": 900,
-      "quantity": 2,
-      "shopId": 1,
-      "shopName": "Putra Mahkota",
-      "subTotal": 1800,
-    },
-  ],
-  "state": "Open",
-  "updatedAt": Any<String>,
-}
+Array [
+  Object {
+    "id": 1,
+    "productId": 1,
+    "productName": "MacBook Pro 16 2020",
+    "productPrice": 2500,
+    "quantity": 1,
+    "shopId": 1,
+    "shopName": "Putra Mahkota",
+    "subTotal": 2500,
+  },
+  Object {
+    "id": 2,
+    "productId": 2,
+    "productName": "Li-Ion Battery",
+    "productPrice": 250,
+    "quantity": 2,
+    "shopId": 1,
+    "shopName": "Putra Mahkota",
+    "subTotal": 500,
+  },
+  Object {
+    "id": 3,
+    "productId": 3,
+    "productName": "M3 SSD 1TB",
+    "productPrice": 900,
+    "quantity": 2,
+    "shopId": 1,
+    "shopName": "Putra Mahkota",
+    "subTotal": 1800,
+  },
+]
 `;
 
 exports[`Charts Items Should merge item quantity when added twice 1`] = `
-Object {
-  "address": null,
-  "createdAt": Any<String>,
-  "deleted": false,
-  "id": Any<Number>,
-  "items": Array [
-    Object {
-      "id": 1,
-      "itemId": 1,
-      "itemName": "MacBook Pro 16 2020",
-      "price": 2500,
-      "quantity": 5,
-      "shopId": 1,
-      "shopName": "Putra Mahkota",
-      "subTotal": 12500,
-    },
-  ],
-  "state": "Open",
-  "updatedAt": Any<String>,
-}
+Array [
+  Object {
+    "id": 1,
+    "productId": 1,
+    "productName": "MacBook Pro 16 2020",
+    "productPrice": 2500,
+    "quantity": 5,
+    "shopId": 1,
+    "shopName": "Putra Mahkota",
+    "subTotal": 12500,
+  },
+]
 `;

@@ -1,5 +1,5 @@
 import { noop } from "@plumier/reflect"
-import { api, authorize, bind, ControllerBuilder, genericController, JwtClaims, preSave, val } from "plumier"
+import { api, authorize, bind, ControllerBuilder, genericController, JwtClaims, meta, preSave, val } from "plumier"
 import { Column, Entity, getRepository, OneToMany } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
@@ -22,7 +22,6 @@ export class Shop extends EntityBase {
 
     // /api/shops/{pid}/users 
     @genericController(c => {
-        c.setPath("shops/:pid/users/:id")
         c.mutators().authorize("ShopOwner")
         c.accessors().authorize("ShopOwner", "ShopStaff")
             .transformer(ShopUserDto, transformer)
@@ -66,12 +65,12 @@ const transformer = (x: ShopUser) => ({
 })
 
 export class ShopUserDto {
-    @noop()
+    @meta.property()
     userId: number
 
-    @noop()
+    @meta.property()
     name: string
 
-    @noop()
+    @meta.property()
     role: "ShopOwner" | "ShopStaff"
 }

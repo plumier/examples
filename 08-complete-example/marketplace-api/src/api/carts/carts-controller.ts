@@ -1,5 +1,5 @@
 import { GenericController } from "@plumier/typeorm"
-import { api, bind, ControllerBuilder, JwtClaims, route } from "plumier"
+import { api, bind, ControllerBuilder, HttpStatusError, JwtClaims, meta, route } from "plumier"
 import { getRepository } from "typeorm"
 
 import { OrderItem } from "../orders-items/order-item-entity"
@@ -7,16 +7,15 @@ import { Order } from "../orders/order-entity"
 import { Cart } from "./carts-entity"
 
 const config = (c: ControllerBuilder) => {
-    c.methods("Post", "Delete", "GetOne").ignore()
-    c.methods("Put", "Patch").authorize("ResourceOwner")
-    c.getMany().ignore()
+    c.methods("Post", "Delete", "GetMany", "Put").ignore()
+    c.methods("Patch", "GetOne").authorize("ResourceOwner")
 }
 
 @api.tag("Shopping Cart")
 export class CartsController extends GenericController(Cart, config) {
 
     @route.ignore()
-    private async getOpen(user: JwtClaims, relations: string[] = ["address"]) {
+    private async getOpen(user: JwtClaims, relations: string[] = []) {
         const repo = getRepository(Cart)
         const openCart = await repo.findOne({
             where: { user: user.userId, state: "Open", deleted: false },
@@ -26,21 +25,10 @@ export class CartsController extends GenericController(Cart, config) {
     }
 
     @route.get()
+    @meta.type({ id: Number })
     async open(@bind.user() user: JwtClaims) {
-        const { items: cartItems, ...cart } = await this.getOpen(user, ["address", "items", "items.product", "items.product.shop"])
-        const items = (cartItems ?? []).map(({ product, ...ci }) => {
-            return {
-                id: ci.id,
-                quantity: ci.quantity,
-                itemId: product.id,
-                itemName: product.name,
-                price: product.price,
-                shopId: product.shop.id,
-                shopName: product.shop.name,
-                subTotal: product.price * ci.quantity
-            }
-        })
-        return { ...cart, items }
+        const { id } = await this.getOpen(user)
+        return { id }
     }
 
     @route.post()
@@ -48,8 +36,9 @@ export class CartsController extends GenericController(Cart, config) {
         const cartRepo = getRepository(Cart)
         const orderRepo = getRepository(Order)
         const oItmRepo = getRepository(OrderItem)
-        const cart = await this.getOpen(user)
-        await cartRepo.save({ ...cart, state: "Closed" })
+        const cart = await this.getOpen(user, ["address", "items", "items.product", "items.product.shop"])
+        if (!cart.address)
+            throw new HttpStatusError(422, "Shipping address is required")
         const orders: { [key: number]: Order } = {}
         for (const item of cart.items) {
             const shopId = item.product.shop.id
@@ -61,6 +50,7 @@ export class CartsController extends GenericController(Cart, config) {
                     state: "ReceivedBySeller",
                     user: { id: user.userId }
                 })
+                orders[shopId] = order
             }
             await oItmRepo.save({
                 order,
@@ -69,5 +59,6 @@ export class CartsController extends GenericController(Cart, config) {
                 quantity: item.quantity
             })
         }
+        await cartRepo.save({ ...cart, state: "Closed" })
     }
 }

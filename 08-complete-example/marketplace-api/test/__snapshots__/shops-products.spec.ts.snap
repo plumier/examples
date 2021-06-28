@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Shop Item Should able adding images 1`] = `
+Object {
+  "id": 1,
+  "name": "MacBook Pro 16 2020",
+  "price": 2500,
+}
+`;
+
+exports[`Shop Item Should able adding images 2`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "mimeType": "image/jpeg",
+  "name": "landscape.jpeg",
+  "size": Any<Number>,
+  "updatedAt": Any<String>,
+  "url": "https://image.com/image.jpg",
+}
+`;
+
+exports[`Shop Item Should able adding images 3`] = `
+Object {
+  "createdAt": Any<String>,
+  "deleted": false,
+  "id": Any<Number>,
+  "mimeType": "image/jpeg",
+  "name": "landscape.jpeg",
+  "size": Any<Number>,
+  "updatedAt": Any<String>,
+  "url": "https://image.com/image.jpg",
+}
+`;
+
 exports[`Shop Item Should able adding item by staff 1`] = `
 Object {
   "basePrice": 2000,

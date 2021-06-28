@@ -79,6 +79,68 @@ export async function createShop(app: any, opt?: CreateShopOption) {
     return { owner: shopOwner, staffs: shopStaffs, shop: <{ id: number }>body, products: shopProducts }
 }
 
+export async function createCart(app: any) {
+    const { products, ...putra } = await createShop(app, {
+        items: [
+            { name: "MacBook Pro 16 2020", basePrice: 2000, price: 2500 },
+            { name: "Li-Ion Battery", basePrice: 200, price: 250 },
+            { name: "M3 SSD 1TB", basePrice: 700, price: 900 },
+        ]
+    })
+    const { products: aliItems, ...ali } = await createShop(app, {
+        shop: { name: "Ali Shop" },
+        owner: { email: "ali.owner@gmial.com" },
+        staffs: [],
+        items: [
+            { name: "MacBook Pro 16 2020", basePrice: 2000, price: 2100 },
+            { name: "Li-Ion Battery", basePrice: 200, price: 210 },
+            { name: "M3 SSD 1TB", basePrice: 700, price: 800 },
+        ]
+    })
+    const user = await createUser(app, { email: "jane.dane@gmail.com", name: "Jane Dane" })
+    const { body: cart } = await supertest(app.callback())
+        .get(`/api/carts/open`)
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    await supertest(app.callback())
+        .post(`/api/carts/${cart.id}/items`)
+        .send({ product: products[0].id, quantity: 1 })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    await supertest(app.callback())
+        .post(`/api/carts/${cart.id}/items`)
+        .send({ product: products[1].id, quantity: 2 })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    await supertest(app.callback())
+        .post(`/api/carts/${cart.id}/items`)
+        .send({ product: products[2].id, quantity: 2 })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    await supertest(app.callback())
+        .post(`/api/carts/${cart.id}/items`)
+        .send({ product: aliItems[0].id, quantity: 1 })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    // add shipping address
+    const { body: address } = await supertest(app.callback())
+        .post(`/api/users/${user.id}/shipping-addresses`)
+        .send({
+            address: "Br. Guntur Kemenuh Blahbatuh Gianyar",
+            city: "Gianyar",
+            country: "Indonesia",
+            zipCode: "80281",
+        })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    await supertest(app.callback())
+        .patch(`/api/carts/${cart.id}`)
+        .send({ address: address.id })
+        .set("Authorization", `Bearer ${user.token}`)
+        .expect(200)
+    return { id: cart.id, user, shops: [putra, ali] }
+}
+
 export async function closeConnection() {
     const con = getConnection()
     if (con.isConnected)

@@ -1,6 +1,7 @@
 import { noop } from "@plumier/reflect"
-import { api, authorize, genericController, val } from "plumier"
+import { api, authorize, genericController, preSave, val } from "plumier"
 import { Column, Entity, OneToMany } from "typeorm"
+import bcrypt from "bcryptjs"
 
 import { EntityBase } from "../../_shared/entity-base"
 import { Order } from "../orders/order-entity"
@@ -49,13 +50,12 @@ export class User extends EntityBase {
     @OneToMany(x => ShopUser, x => x.user)
     shops: ShopUser[]
 
-
     // /api/users/{pid}/shipping-addresses
     @genericController(c => {
         c.setPath("users/:pid/shipping-addresses/:id")
         c.all().authorize("ResourceOwner")
     })
-    @api.tag("Users Shipping Address Management")
+    @api.tag("User Shipping Address Management")
     @authorize.none()
     @OneToMany(x => ShippingAddress, x => x.user)
     address: ShippingAddress[]
@@ -65,10 +65,16 @@ export class User extends EntityBase {
         c.mutators().ignore()
         c.accessors().authorize("ResourceOwner")
     })
-    @api.tag("Users Order Management")
+    @api.tag("User Order Management")
     @authorize.none()
     @OneToMany(x => Order, x => x.user)
     orders: Order[]
+
+    @preSave()
+    async hashPassword() {
+        if (this.password)
+            this.password = await bcrypt.hash(this.password, await bcrypt.genSalt())
+    }
 }
 
 const transformer = (x: ShopUser) => (<UserShopDto>{

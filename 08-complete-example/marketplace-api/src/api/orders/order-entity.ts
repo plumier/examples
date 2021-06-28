@@ -1,4 +1,4 @@
-import { authorize, val } from "plumier"
+import { api, authorize, genericController, meta, val } from "plumier"
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
@@ -6,6 +6,27 @@ import { OrderItem } from "../orders-items/order-item-entity"
 import { ShippingAddress } from "../shipping-addresses/shipping-addresses-entity"
 import { Shop } from "../shops/shops-entity"
 import { User } from "../users/users-entity"
+
+
+class OrderItemDto {
+    @meta.property()
+    id:number
+
+    @meta.property()
+    productId:number
+
+    @meta.property()
+    productName:string 
+
+    @meta.property()
+    productPrice:number 
+
+    @meta.property()
+    quantity:number 
+
+    @meta.property()
+    subTotal:number
+}
 
 @Entity()
 export class Order extends EntityBase {
@@ -30,7 +51,24 @@ export class Order extends EntityBase {
     @ManyToOne(x => ShippingAddress)
     address: ShippingAddress
 
+    @genericController(c => {
+        c.accessors().transformer(OrderItemDto, transformer).authorize("ResourceOwner", "ShopOwner", "ShopStaff")
+        c.mutators().ignore()
+    })
+    @api.tag("User Order Management")
+    @api.tag("Shop Order Management")
     @authorize.readonly()
     @OneToMany(x => OrderItem, x => x.order)
     items: OrderItem[]
+}
+
+const transformer = (x:OrderItem):OrderItemDto => {
+    return { 
+        id: x.id, 
+        quantity: x.quantity, 
+        subTotal: x.quantity * x.price, 
+        productId:x.product.id,
+        productName: x.product.name,
+        productPrice: x.price
+    }
 }

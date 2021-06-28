@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shops Images Should upload file properly 1`] = `
+Object {
+  "id": 1,
+}
+`;

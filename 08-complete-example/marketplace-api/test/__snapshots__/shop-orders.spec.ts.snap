@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Carts Should able to assign shipping address 1`] = `
+exports[`Shop Orders Should able to list orders 1`] = `
 Object {
   "address": Object {
     "address": "Br. Guntur Kemenuh Blahbatuh Gianyar",
@@ -13,37 +13,17 @@ Object {
     "zipCode": "80281",
   },
   "createdAt": Any<String>,
+  "date": Any<String>,
   "deleted": false,
   "id": Any<Number>,
-  "state": "Open",
+  "state": "ReceivedBySeller",
   "updatedAt": Any<String>,
   "user": Object {
     "createdAt": Any<String>,
     "deleted": false,
-    "email": "john.doe@gmail.com",
     "id": Any<Number>,
-    "name": "John Doe",
-    "role": "User",
+    "name": "Jane Dane",
     "updatedAt": Any<String>,
   },
-}
-`;
-
-exports[`Carts Should checkout cart properly 1`] = `
-Array [
-  Object {
-    "shop": "Putra Mahkota",
-    "state": "ReceivedBySeller",
-  },
-  Object {
-    "shop": "Ali Shop",
-    "state": "ReceivedBySeller",
-  },
-]
-`;
-
-exports[`Carts Should create new chart when no open cart 1`] = `
-Object {
-  "id": 1,
 }
 `;

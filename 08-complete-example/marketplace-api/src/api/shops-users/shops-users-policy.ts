@@ -6,10 +6,12 @@ import { ShopUser } from "./shops-users-entity"
 
 entityPolicy(ShopUser)
     .register("ShopOwner", async ({ user }, id) => {
-        const shopUser = await getRepository(ShopUser).findOne(id, { relations: ["user"], cache: true })
-        return shopUser?.user.id === user?.userId && shopUser?.role === "ShopOwner"
+        const shopUser = await getRepository(ShopUser)
+            .findOne(id, { relations: ["user"], cache: true })
+        return shopUser?.deleted === false && shopUser?.user.id === user?.userId && shopUser?.role === "ShopOwner"
     })
     .register("ShopStaff", async ({ user }, id) => {
-        const shopUser = await getRepository(ShopUser).findOne(id, { relations: ["user"], cache: true })
-        return shopUser?.user.id === user?.userId && shopUser?.role === "ShopStaff"
+        const shopUser = await getRepository(ShopUser)
+            .findOne(id, { relations: ["user"], cache: true })
+        return shopUser?.deleted === false && shopUser?.user.id === user?.userId && shopUser?.role === "ShopStaff"
     })

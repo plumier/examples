@@ -8,7 +8,9 @@
   "private": true,
   "scripts": {
     "test": "yarn workspaces run test",
-    "build": "yarn workspaces run build"
+    "test:m": "yarn workspace marketplace-api test",
+    "build": "yarn workspaces run build",
+    "debug:m": "yarn workspace marketplace-api debug"
   },
   "workspaces": {
     "packages": [
