@@ -1,18 +1,12 @@
-import { GenericController } from "@plumier/typeorm"
-import { api, bind, ControllerBuilder, HttpStatusError, JwtClaims, meta, route } from "plumier"
+import { api, bind, HttpStatusError, JwtClaims, meta, route } from "plumier"
 import { getRepository } from "typeorm"
 
 import { OrderItem } from "../orders-items/order-item-entity"
 import { Order } from "../orders/order-entity"
 import { Cart } from "./carts-entity"
 
-const config = (c: ControllerBuilder) => {
-    c.methods("Post", "Delete", "GetMany", "Put").ignore()
-    c.methods("Patch", "GetOne").authorize("ResourceOwner")
-}
-
 @api.tag("Shopping Cart")
-export class CartsController extends GenericController(Cart, config) {
+export class CartsController {
 
     @route.ignore()
     private async getOpen(user: JwtClaims, relations: string[] = []) {

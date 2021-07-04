@@ -8,8 +8,6 @@ import { ShippingAddress } from "../shipping-addresses/shipping-addresses-entity
 import { Shop } from "../shops/shops-entity"
 import { User } from "../users/users-entity"
 
-
-
 @Entity()
 export class Order extends EntityBase {
 

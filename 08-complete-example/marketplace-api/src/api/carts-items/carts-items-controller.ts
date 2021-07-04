@@ -1,5 +1,5 @@
 import { GenericController } from "@plumier/typeorm"
-import { api, ControllerBuilder, HttpStatusError, meta, SelectQuery } from "plumier"
+import { api, authorize, ControllerBuilder, entityProvider, filterParser, HttpStatusError, meta, orderParser, route, SelectQuery, val } from "plumier"
 import { getRepository } from "typeorm"
 
 import { Cart } from "../carts/carts-entity"
@@ -9,16 +9,14 @@ import { CartItem } from "./carts-items-entity"
 
 
 
-const config = (c: ControllerBuilder) => {
-    c.accessors().authorize("ResourceOwner")
-    c.methods("Put", "Patch", "Delete", "Post").authorize("ResourceOwner")
-}
-
 @api.tag("Shopping Cart")
-export class CartItemController extends GenericController([Cart, "items"], config) {
+@route.root("carts/:pid/items")
+@authorize.route("ResourceOwner")
+export class CartItemController {
 
-    // overrides the POST /api/shop/{pid}/items 
-    override async save(pid: number, data: CartItem) {
+    @route.post("")
+    @entityProvider(Cart, "pid")
+    async save(@val.required() pid: number, data: CartItem) {
         const cartItemRepo = getRepository(CartItem)
         const cartRepo = getRepository(Cart)
         const itemRepo = getRepository(Product)
@@ -38,21 +36,23 @@ export class CartItemController extends GenericController([Cart, "items"], confi
         }
     }
 
+    @route.get("")
     @meta.type([CartItemDto])
-    override async list(pid: number, offset: number, limit: number, filter: any, select: SelectQuery, order: any) {
+    @entityProvider(Cart, "pid")
+    async list(@val.required() pid: number, offset: number, limit: number, @filterParser(x => CartItem) filter: any, @orderParser(x => CartItem) order: any) {
         const repo = getRepository(CartItem)
-        const items = await repo.find({ 
+        const items = await repo.find({
             where: { ...filter, cart: pid },
             take: limit,
             skip: offset,
             order: order,
             relations: ["product", "product.shop"]
         })
-        return items.map(x => ({ 
-            id: x.id, 
-            quantity: x.quantity, 
-            subTotal: x.quantity * x.product.price, 
-            productId:x.product.id,
+        return items.map(x => ({
+            id: x.id,
+            quantity: x.quantity,
+            subTotal: x.quantity * x.product.price,
+            productId: x.product.id,
             productName: x.product.name,
             productPrice: x.product.price,
             shopId: x.product.shop.id,
