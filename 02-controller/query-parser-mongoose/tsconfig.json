@@ -7,5 +7,6 @@
     "strictPropertyInitialization": false,
     "strict": true,
     "esModuleInterop": true,
+    "skipLibCheck": true
   }
 }
