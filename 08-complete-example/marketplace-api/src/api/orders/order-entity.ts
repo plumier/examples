@@ -2,7 +2,6 @@ import { api, authorize, genericController, meta, val } from "plumier"
 import { Column, CreateDateColumn, Entity, ManyToOne, OneToMany } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
-import { OrderItemDto } from "../orders-items/order-item-dto"
 import { OrderItem } from "../orders-items/order-item-entity"
 import { ShippingAddress } from "../shipping-addresses/shipping-addresses-entity"
 import { Shop } from "../shops/shops-entity"
@@ -32,7 +31,9 @@ export class Order extends EntityBase {
     address: ShippingAddress
 
     @genericController(c => {
-        c.accessors().transformer(OrderItemDto, transformer).authorize("ResourceOwner", "ShopOwner", "ShopStaff")
+        c.accessors()
+            .transformer(OrderItemDto, (x: OrderItem) => ({ ...x, subTotal: x.quantity * x.price }))
+            .authorize("ResourceOwner", "ShopOwner", "ShopStaff")
         c.mutators().ignore()
     })
     @api.tag("User Order Management")
@@ -42,13 +43,7 @@ export class Order extends EntityBase {
     items: OrderItem[]
 }
 
-const transformer = (x:OrderItem):OrderItemDto => {
-    return { 
-        id: x.id, 
-        quantity: x.quantity, 
-        subTotal: x.quantity * x.price, 
-        productId:x.product.id,
-        productName: x.product.name,
-        productPrice: x.price
-    }
+class OrderItemDto extends OrderItem {
+    @meta.property()
+    subTotal: number
 }

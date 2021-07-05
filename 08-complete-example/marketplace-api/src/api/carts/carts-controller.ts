@@ -50,7 +50,8 @@ export class CartsController {
                 order,
                 price: item.product.price,
                 product: item.product,
-                quantity: item.quantity
+                quantity: item.quantity,
+                shop: item.product.shop
             })
         }
         await cartRepo.save({ ...cart, state: "Closed" })

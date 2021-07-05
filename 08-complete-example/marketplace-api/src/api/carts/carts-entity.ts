@@ -3,7 +3,7 @@ import { api, genericController } from "plumier"
 import { Column, Entity, ManyToOne, OneToMany } from "typeorm"
 
 import { EntityBase } from "../../_shared/entity-base"
-import { CartItem } from "../carts-items/carts-items-entity"
+import { CartItem, CartItemDto } from "../carts-items/carts-items-entity"
 import { ShippingAddress } from "../shipping-addresses/shipping-addresses-entity"
 import { User } from "../users/users-entity"
 
@@ -16,7 +16,7 @@ import { User } from "../users/users-entity"
 export class Cart extends EntityBase {
     @authorize.readonly()
     @ManyToOne(x => User)
-    user:User 
+    user: User
 
     @ManyToOne(x => ShippingAddress)
     address: ShippingAddress
@@ -27,10 +27,13 @@ export class Cart extends EntityBase {
 
     @genericController(c => {
         c.methods("Post").ignore()
-        c.methods("Put", "Patch", "Delete", "Post", "GetOne").authorize("ResourceOwner")
+        c.accessors().transformer(CartItemDto, (x: CartItem) => ({ ...x, subTotal: x.quantity * x.product.price }))
+            .authorize("ResourceOwner")
+        c.methods("Put", "Patch", "Delete", "Post").authorize("ResourceOwner")
     })
     @api.tag("Shopping Cart")
     @authorize.none()
     @OneToMany(x => CartItem, x => x.cart)
-    items:CartItem[]
+    items: CartItem[]
 }
+

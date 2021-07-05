@@ -1,7 +1,8 @@
 import supertest from "supertest"
 import createApp from "../src/app"
-import { closeConnection, createCart, createUser } from "./_helper"
+import { closeConnection, createCart, createUser, omitKeys } from "./_helper"
 
+const omit = (obj: any) => omitKeys(obj, ["createdAt", "updatedAt"])
 
 afterEach(async () => {
     await closeConnection()
@@ -20,10 +21,11 @@ describe("Order Items", () => {
             .get(`/api/shops/${putra.shop.id}/orders`)
             .set("Authorization", `Bearer ${putra.staffs[0].token}`)
             .expect(200)
-        await supertest(app.callback())
+        const {body} = await supertest(app.callback())
             .get(`/api/orders/${orders[0].id}/items`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
+        expect(omit(body)).toMatchSnapshot()
     })
 
     it("Should accessible by shop staff", async () => {

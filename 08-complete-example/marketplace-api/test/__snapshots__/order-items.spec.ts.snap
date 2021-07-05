@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Order Items Should accessible by resource owner 1`] = `
+Array [
+  Object {
+    "deleted": false,
+    "id": 1,
+    "price": 2500,
+    "product": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "MacBook Pro 16 2020",
+      "price": 2500,
+    },
+    "quantity": 1,
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
+    "subTotal": 2500,
+  },
+  Object {
+    "deleted": false,
+    "id": 2,
+    "price": 250,
+    "product": Object {
+      "deleted": false,
+      "id": 2,
+      "name": "Li-Ion Battery",
+      "price": 250,
+    },
+    "quantity": 2,
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
+    "subTotal": 500,
+  },
+  Object {
+    "deleted": false,
+    "id": 3,
+    "price": 900,
+    "product": Object {
+      "deleted": false,
+      "id": 3,
+      "name": "M3 SSD 1TB",
+      "price": 900,
+    },
+    "quantity": 2,
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
+    "subTotal": 1800,
+  },
+]
+`;

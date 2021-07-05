@@ -14,14 +14,14 @@ entityPolicy(OrderItem)
     .register("ShopOwner", async ({ user }, id) => {
         const oRepo = getRepository(OrderItem)
         const uRepo = getRepository(ShopUser)
-        const item = await oRepo.findOne(id, { relations: ["order.shop"] })
-        const uShop = await uRepo.findOne({ where: { shop: item?.order.shop.id, user: user?.userId } })
+        const item = await oRepo.findOne(id, { relations: ["shop"] })
+        const uShop = await uRepo.findOne({ where: { shop: item?.shop.id, user: user?.userId } })
         return item?.deleted === false && uShop?.role === "ShopOwner"
     })
     .register("ShopStaff", async ({ user }, id) => {
         const oRepo = getRepository(OrderItem)
         const uRepo = getRepository(ShopUser)
-        const item = await oRepo.findOne(id, { relations: ["order.shop"] })
-        const uShop = await uRepo.findOne({ where: { shop: item?.order.shop.id, user: user?.userId } })
+        const item = await oRepo.findOne(id, { relations: ["shop"] })
+        const uShop = await uRepo.findOne({ where: { shop: item?.shop.id, user: user?.userId } })
         return item?.deleted === false && uShop?.role === "ShopStaff"
     })

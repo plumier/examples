@@ -3,23 +3,37 @@
 exports[`Charts Items Should able to add from multiple shops 1`] = `
 Array [
   Object {
+    "deleted": false,
     "id": 1,
-    "productId": 1,
-    "productName": "MacBook Pro 16 2020",
-    "productPrice": 2500,
+    "product": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "MacBook Pro 16 2020",
+      "price": 2500,
+    },
     "quantity": 1,
-    "shopId": 1,
-    "shopName": "Putra Mahkota",
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
     "subTotal": 2500,
   },
   Object {
+    "deleted": false,
     "id": 2,
-    "productId": 4,
-    "productName": "MacBook Pro 16 2020",
-    "productPrice": 2100,
+    "product": Object {
+      "deleted": false,
+      "id": 4,
+      "name": "MacBook Pro 16 2020",
+      "price": 2100,
+    },
     "quantity": 1,
-    "shopId": 2,
-    "shopName": "Ali Shop",
+    "shop": Object {
+      "deleted": false,
+      "id": 2,
+      "name": "Ali Shop",
+    },
     "subTotal": 2100,
   },
 ]
@@ -28,33 +42,54 @@ Array [
 exports[`Charts Items Should add item properly 1`] = `
 Array [
   Object {
+    "deleted": false,
     "id": 1,
-    "productId": 1,
-    "productName": "MacBook Pro 16 2020",
-    "productPrice": 2500,
+    "product": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "MacBook Pro 16 2020",
+      "price": 2500,
+    },
     "quantity": 1,
-    "shopId": 1,
-    "shopName": "Putra Mahkota",
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
     "subTotal": 2500,
   },
   Object {
+    "deleted": false,
     "id": 2,
-    "productId": 2,
-    "productName": "Li-Ion Battery",
-    "productPrice": 250,
+    "product": Object {
+      "deleted": false,
+      "id": 2,
+      "name": "Li-Ion Battery",
+      "price": 250,
+    },
     "quantity": 2,
-    "shopId": 1,
-    "shopName": "Putra Mahkota",
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
     "subTotal": 500,
   },
   Object {
+    "deleted": false,
     "id": 3,
-    "productId": 3,
-    "productName": "M3 SSD 1TB",
-    "productPrice": 900,
+    "product": Object {
+      "deleted": false,
+      "id": 3,
+      "name": "M3 SSD 1TB",
+      "price": 900,
+    },
     "quantity": 2,
-    "shopId": 1,
-    "shopName": "Putra Mahkota",
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
     "subTotal": 1800,
   },
 ]
@@ -63,13 +98,20 @@ Array [
 exports[`Charts Items Should merge item quantity when added twice 1`] = `
 Array [
   Object {
+    "deleted": false,
     "id": 1,
-    "productId": 1,
-    "productName": "MacBook Pro 16 2020",
-    "productPrice": 2500,
+    "product": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "MacBook Pro 16 2020",
+      "price": 2500,
+    },
     "quantity": 5,
-    "shopId": 1,
-    "shopName": "Putra Mahkota",
+    "shop": Object {
+      "deleted": false,
+      "id": 1,
+      "name": "Putra Mahkota",
+    },
     "subTotal": 12500,
   },
 ]

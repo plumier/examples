@@ -1,7 +1,9 @@
 import supertest from "supertest"
 
 import createApp from "../src/app"
-import { closeConnection, createShop, createUser, ignore } from "./_helper"
+import { closeConnection, createShop, createUser, ignore, omitKeys } from "./_helper"
+
+const omit = (obj: any) => omitKeys(obj, ["createdAt", "updatedAt"])
 
 afterEach(async () => {
     await closeConnection()
@@ -41,7 +43,7 @@ describe("Charts Items", () => {
             .get(`/api/carts/${cart.id}/items`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
-        expect(body).toMatchSnapshot()
+        expect(omit(body)).toMatchSnapshot()
     })
     it("Should merge item quantity when added twice", async () => {
         const app = await createApp({ mode: "production" })
@@ -71,7 +73,7 @@ describe("Charts Items", () => {
             .get(`/api/carts/${cart.id}/items`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
-        expect(body).toMatchSnapshot()
+        expect(omit(body)).toMatchSnapshot()
     })
     it("Should able to add from multiple shops", async () => {
         const app = await createApp({ mode: "production" })
@@ -111,7 +113,7 @@ describe("Charts Items", () => {
             .get(`/api/carts/${cart.id}/items`)
             .set("Authorization", `Bearer ${user.token}`)
             .expect(200)
-        expect(body).toMatchSnapshot()
+        expect(omit(body)).toMatchSnapshot()
     })
     it("Should not accessible by other user", async () => {
         const app = await createApp({ mode: "production" })
