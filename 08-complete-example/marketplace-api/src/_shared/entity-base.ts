@@ -15,6 +15,7 @@ export class EntityBase {
     @UpdateDateColumn()
     updatedAt: Date
 
+    @authorize.readonly()
     @entity.deleteColumn()
     @Column({ default: false })
     deleted: boolean
