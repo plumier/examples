@@ -24,7 +24,7 @@ This monorepo contains comprehensive list of Plumier examples. Its intended to b
 
 * [query-parser-mongoose](02-controller/query-parser-mongoose) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
 
-* [query-parser-typeorm](02-controller/query-parser-typeorm) contains example on how to use Query Parser helper to parse request query string into Mongoose Query.
+* [query-parser-typeorm](02-controller/query-parser-typeorm) contains example on how to use Query Parser helper to parse request query string into TypeORM Query.
 
 ### Data Access
   
