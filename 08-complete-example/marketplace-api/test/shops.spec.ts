@@ -13,7 +13,7 @@ describe("Shop", () => {
         await supertest(app.callback())
             .post("/api/shops")
             .send({ name: "Putra Mahkota" })
-            .expect(403)
+            .expect(401)
     })
     it("Should able to register for any login user", async () => {
         const app = await createApp({ mode: "production" })
@@ -49,6 +49,6 @@ describe("Shop", () => {
         await supertest(app.callback())
             .patch(`/api/shops/${body.id}`)
             .set("Authorization", `Bearer ${userToken}`)
-            .expect(401)
+            .expect(403)
     })
 })

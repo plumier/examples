@@ -93,7 +93,7 @@ describe("Carts", () => {
             .patch(`/api/carts/${cart.id}`)
             .send({ address: shipping.id })
             .set("Authorization", `Bearer ${otherUser.token}`)
-            .expect(401)
+            .expect(403)
     })
     it("Should checkout cart properly", async () => {
         const app = await createApp({ mode: "production" })
@@ -118,6 +118,6 @@ describe("Carts", () => {
         await supertest(app.callback())
             .get(`/api/carts/${cart.id}`)
             .set("Authorization", `Bearer ${cart.user.token}`)
-            .expect(401)
+            .expect(403)
     })
 })

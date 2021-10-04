@@ -50,7 +50,7 @@ describe("Authorization", () => {
         await supertest(app.callback())
             .post("/api/auth/refresh")
             .set("Authorization", `Bearer ${tokens.token}`)
-            .expect(401)
+            .expect(403)
     })
 
     it("Should able to access private route using token", async () => {
@@ -78,6 +78,6 @@ describe("Authorization", () => {
         await supertest(app.callback())
             .post("/api/auth/logout")
             .set("Authorization", `Bearer ${tokens.refreshToken}`)
-            .expect(401)
+            .expect(403)
     })
 })

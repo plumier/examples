@@ -35,6 +35,6 @@ describe("User Orders", () => {
         await supertest(app.callback())
             .get(`/api/users/${user.id}/orders`)
             .set("Authorization", `Bearer ${otherUser.token}`)
-            .expect(401)
+            .expect(403)
     })
 })

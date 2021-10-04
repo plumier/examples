@@ -54,7 +54,7 @@ describe("Users Shipping Addresses", () => {
         await supertest(app.callback())
             .delete(`/api/users/${user.id}/shipping-addresses/${added.id}`)
             .set("Authorization", `Bearer ${otherUser.token}`)
-            .expect(401)
+            .expect(403)
         await supertest(app.callback())
             .delete(`/api/users/${user.id}/shipping-addresses/${added.id}`)
             .set("Authorization", `Bearer ${user.token}`)

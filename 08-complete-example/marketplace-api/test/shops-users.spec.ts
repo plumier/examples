@@ -36,6 +36,6 @@ describe("Shop User", () => {
             .patch(`/api/shops/${shop.id}/users/${body.id}`)
             .send({ role: "ShopOwner" })
             .set("Authorization", `Bearer ${otherUser.token}`)
-            .expect(401)
+            .expect(403)
     })
 })

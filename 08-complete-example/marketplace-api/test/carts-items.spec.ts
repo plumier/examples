@@ -126,6 +126,6 @@ describe("Charts Items", () => {
         await supertest(app.callback())
             .get(`/api/carts/${cart.id}/items`)
             .set("Authorization", `Bearer ${john.token}`)
-            .expect(401)
+            .expect(403)
     })
 })

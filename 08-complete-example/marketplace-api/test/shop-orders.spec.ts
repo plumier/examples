@@ -46,6 +46,6 @@ describe("Shop Orders", () => {
         await supertest(app.callback())
             .get(`/api/shops/${putra.shop.id}/orders`)
             .set("Authorization", `Bearer ${ali.owner.token}`)
-            .expect(401)
+            .expect(403)
     })
 })

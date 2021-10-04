@@ -38,6 +38,6 @@ describe("Shop User", () => {
         await supertest(app.callback())
             .get(`/api/users/${ali.id}/shops`)
             .set("Authorization", `Bearer ${staffs[0].token}`)
-            .expect(401)
+            .expect(403)
     })
 })
